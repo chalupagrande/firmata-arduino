@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Document</title>
+  <style>
+    iframe {
+      width: 100vw;
+      height: 100vh;
+    }
+    button {
+      width: 200px;
+      height: 100px;
+    }
+  </style>
+</head>
+<body>
+  <h1>THIS IS BALLER AS SHIIIIIT</h1>
+  <button>PRESS ME TO CONTROL LIGHTS</button>
+  <h3 class="response">RESPONSE</h3>
+
+
+</body>
+</html>
+
+<script>
+  document.querySelector('button').addEventListener('click', function(){
+    var xhttp = new XMLHttpRequest();
+    xhttp.onreadystatechange = function() {
+        console.log(this)
+        if (this.readyState == 4 && this.status == 200) {
+          // Action to be performed when the document is read;
+          document.querySelector('.response').innerText = this.responseText
+        }
+    };
+    xhttp.open("GET", "http://58a94d30.ngrok.io/light", true);
+    xhttp.send();
+  })
+</script>
